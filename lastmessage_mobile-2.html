@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LastMessage - Healing Tracker</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}body{background:#050b16;color:#fff;min-height:100vh}.app{max-width:430px;margin:auto;min-height:100vh;background:linear-gradient(180deg,#07101f 0%,#030812 100%);padding-bottom:90px}.topbar{display:flex;align-items:center;justify-content:space-between;padding:20px 20px 12px;position:sticky;top:0;background:rgba(5,11,22,.92);backdrop-filter:blur(14px);z-index:10}.menu,.bell{font-size:26px;color:#fff}.site-notice{margin:0 18px 16px;padding:13px 14px;border:1px solid rgba(255,95,151,.35);border-radius:14px;background:linear-gradient(135deg,rgba(255,95,151,.16),rgba(139,92,246,.10));color:#ffe4ef;font-size:14px;line-height:1.45;text-align:center;box-shadow:0 12px 28px rgba(255,63,131,.10)}.site-notice strong{color:#ff79aa}.brand{display:flex;align-items:center;gap:8px;font-size:23px;font-weight:700;font-family:Georgia,serif}.brand span:first-child{font-size:30px}.hero{margin:0 18px;border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(145deg,#1e1436,#111827);box-shadow:0 20px 55px rgba(0,0,0,.35)}.hero-art{height:245px;background:radial-gradient(circle at 70% 20%,#f06ca0 0 2%,transparent 3%),radial-gradient(circle at 65% 35%,#8b5cf6 0 0%,transparent 35%),linear-gradient(135deg,#161b3a,#4b1d55 48%,#f06c75);position:relative}.moon{position:absolute;right:70px;top:38px;font-size:30px}.person{position:absolute;left:36px;bottom:0;width:120px;height:150px;background:linear-gradient(#111827,#020617);border-radius:70px 70px 10px 10px;opacity:.9}.envelope{position:absolute;right:25px;top:75px;width:135px;height:85px;background:#f4dbe4;transform:rotate(-12deg);border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.35)}.note{position:absolute;right:30px;bottom:15px;width:118px;background:#f08aa9;color:#2b1020;padding:18px 10px;border-radius:4px;transform:rotate(8deg);font-family:Georgia,serif;font-size:14px}.hero-content{padding:22px 18px 24px;background:linear-gradient(180deg,rgba(5,11,22,.15),#07101f)}h1{font-size:38px;line-height:1.08;letter-spacing:-1px}.pink{color:#ff5f97}.underline{display:block;width:145px;height:3px;background:#ff5f97;border-radius:30px;margin:8px 0 16px;transform:rotate(-3deg)}.sub{color:#cbd5e1;font-size:16px;line-height:1.55;margin-bottom:24px}.btn{width:100%;border:0;border-radius:12px;padding:17px 18px;font-weight:700;font-size:16px;margin-bottom:12px;color:white;background:linear-gradient(135deg,#ff3f83,#e73872);box-shadow:0 12px 30px rgba(255,63,131,.25)}.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.35);box-shadow:none}.stats{display:grid;grid-template-columns:1fr 1fr;margin:22px 18px;gap:1px;border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;background:rgba(255,255,255,.05)}.stat{padding:18px;background:rgba(15,23,42,.7)}.stat-icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,95,151,.18);font-size:22px;margin-bottom:8px}.stat strong{font-size:18px}.stat p{font-size:13px;color:#cbd5e1;margin-top:4px}.section{padding:0 18px;margin-top:28px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section-title h2{font-size:19px}.section-title a{color:#ff5f97;text-decoration:none;font-weight:600}.card{background:linear-gradient(145deg,rgba(15,23,42,.94),rgba(10,16,30,.94));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:18px;box-shadow:0 16px 35px rgba(0,0,0,.22)}.letter{font-size:16px;line-height:1.55}.meta{display:flex;align-items:center;justify-content:space-between;margin-top:20px;color:#94a3b8;font-size:13px}.actions{display:flex;gap:14px;color:#fff}.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.tool{background:rgba(15,23,42,.85);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:15px 8px;text-align:center;min-height:102px}.tool .circle{width:45px;height:45px;margin:auto auto 10px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:rgba(139,92,246,.25)}.tool p{font-size:12px;line-height:1.25}.promo{margin:22px 18px;padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(255,95,151,.18),rgba(139,92,246,.14));border:1px solid rgba(255,255,255,.1)}.promo h3{color:#ff79aa;margin-bottom:10px}.promo p{color:#cbd5e1;margin-bottom:18px}.mini-btn{display:inline-block;color:#ff79aa;border:1px solid #ff5f97;border-radius:10px;padding:12px 16px;text-decoration:none;font-weight:700}.tracker{display:none;padding:20px 18px 110px}.back{font-size:28px;cursor:pointer}.tracker-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:25px}.tracker-head h2{font-size:24px}.input-card{margin-bottom:20px}.field{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}.field:last-child{border-bottom:0}.label{color:#cbd5e1;font-size:15px;margin-bottom:8px}.date-row{display:flex;justify-content:space-between;align-items:center;font-size:18px}.result{text-align:center;margin-bottom:18px}.big{font-size:78px;font-weight:900;color:#ff5f97;line-height:1}.grid-result{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.08);margin-top:20px}.grid-result div{padding:18px;border-right:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}.grid-result div:nth-child(even){border-right:0}.grid-result strong{display:block;font-size:25px;color:#ffd166}.grid-result p{color:#e2e8f0;font-size:14px;margin-top:5px}.share-card{background:linear-gradient(135deg,#3b1f57,#c04d7e);border-radius:14px;padding:25px;margin-top:12px;min-height:150px;display:flex;align-items:center;font-family:Georgia,serif;font-size:24px;line-height:1.35}.date-input{width:100%;margin-top:8px;padding:13px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(2,6,23,.75);color:#fff;font-size:16px;outline:none}.hint{color:#94a3b8;font-size:13px;margin-top:10px;line-height:1.45}.error{display:none;color:#ff8ab3;background:rgba(255,95,151,.10);border:1px solid rgba(255,95,151,.28);padding:12px;border-radius:12px;margin-bottom:14px;font-size:14px;line-height:1.4}.bottom-nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:430px;height:76px;background:rgba(5,11,22,.96);border-top:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:repeat(5,1fr);z-index:20}.nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#94a3b8;font-size:12px;text-decoration:none}.nav-item.active{color:#ff5f97}.nav-item span{font-size:22px}@media(min-width:800px){body{padding:30px}.app{border-radius:35px;border:8px solid #1f2937;overflow:hidden}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section id="homePage">
+      <header class="topbar">
+        <div class="menu">☰</div>
+        <div class="brand"><span>💔</span><span>LastMessage</span></div>
+        <div class="bell">🔔</div>
+      </header>
+
+      <div class="site-notice"><strong>Notice:</strong> Currently this site is not completed. Some features are under development.</div>
+
+      <div class="hero">
+        <div class="hero-art">
+          <div class="moon">☾</div><div class="person"></div><div class="envelope"></div>
+          <div class="note">Some goodbyes<br>are never said,<br>just felt. ♡</div>
+        </div>
+        <div class="hero-content">
+          <h1>Some words are meant to be written, <span class="pink">not sent.</span></h1>
+          <span class="underline"></span>
+          <p class="sub">Write anonymous letters, express your heart, track your healing and move on — one day at a time.</p>
+          <button class="btn">✎ Write a Letter</button>
+          <button class="btn secondary" onclick="showTracker()">▣ Move On Tracker</button>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="stat-icon">💗</div><strong>125,489</strong><p>Letters Written</p></div>
+        <div class="stat"><div class="stat-icon">👥</div><strong>87,342</strong><p>Hearts Healing</p></div>
+        <div class="stat"><div class="stat-icon">📅</div><strong>2,543,760</strong><p>Days Survived</p></div>
+        <div class="stat"><div class="stat-icon">✍️</div><strong>Today</strong><p>You are not alone.</p></div>
+      </div>
+
+      <section class="section">
+        <div class="section-title"><h2>Popular Right Now</h2><a href="#">View all</a></div>
+        <div class="card">
+          <p class="letter">“Aaj bhi tera chat open karta hoon,<br>bas message bhejne ki himmat nahi hoti.”</p>
+          <div class="meta"><span>2h ago</span><div class="actions"><span>💗 342</span><span>💬 28</span><span>↗</span></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title"><h2>Popular More</h2></div>
+        <div class="tools">
+          <div class="tool"><div class="circle">💬</div><p>Should I Text My Ex?</p></div>
+          <div class="tool"><div class="circle">🔒</div><p>Memory Vault</p></div>
+          <div class="tool"><div class="circle">❞</div><p>Daily Quotes</p></div>
+          <div class="tool"><div class="circle">📈</div><p>Community Stories</p></div>
+        </div>
+      </section>
+
+      <div class="promo">
+        <h3>Track your healing journey</h3>
+        <p>Every day survived is a victory.</p>
+        <a href="#" class="mini-btn" onclick="showTracker()">Start Tracking Now</a>
+      </div>
+    </section>
+
+    <section id="trackerPage" class="tracker">
+      <div class="tracker-head"><span class="back" onclick="showHome()">‹</span><h2>Move On Tracker</h2><span>💖</span></div>
+      <div class="site-notice" style="margin:0 0 16px"><strong>Notice:</strong> Currently this site is not completed. Some features are under development.</div>
+      <p class="sub">Enter your dates and see how far you’ve come. You’re stronger than you think.</p>
+
+      <div class="card input-card">
+        <div class="field">
+          <p class="label">Relationship Start Date</p>
+          <input id="startDate" class="date-input" type="date" value="2022-01-12">
+        </div>
+        <div class="field">
+          <p class="label">Breakup Date</p>
+          <input id="breakupDate" class="date-input" type="date" value="2023-03-20">
+        </div>
+        <p class="hint">Select dates and tap calculate. The tracker counts your healing journey from breakup date to today.</p>
+      </div>
+
+      <div id="dateError" class="error">Please select correct dates. Breakup date should be after relationship start date.</div>
+
+      <div class="card result">
+        <p>You’ve survived</p><div class="big" id="daysResult">437</div><p>days since breakup</p>
+        <div class="grid-result">
+          <div><strong id="monthsResult">14</strong><p>Months</p></div><div><strong id="weekendsResult">62</strong><p>Weekends</p></div>
+          <div><strong id="hoursResult">10,488</strong><p>Hours</p></div><div><strong id="minutesResult">629,280</strong><p>Minutes</p></div>
+        </div>
+      </div>
+
+      <button class="btn" onclick="calculateJourney()">📊 Calculate My Journey</button>
+      <button class="btn secondary" onclick="shareJourney()">↗ Share My Card</button>
+
+      <section class="section" style="padding:0;margin-top:22px">
+        <div class="section-title"><h2>Your Journey Card</h2></div>
+        <div class="share-card" id="journeyCard">437 days without her.<br>Still alive.<br>Still healing.</div>
+        <button class="btn" style="margin-top:14px" onclick="shareJourney()">⬇ Download & Share</button>
+      </section>
+    </section>
+
+    <nav class="bottom-nav">
+      <a class="nav-item active" href="#" onclick="showHome()"><span>🏠</span>Home</a>
+      <a class="nav-item" href="#"><span>✍️</span>Letters</a>
+      <a class="nav-item" href="#" onclick="showTracker()"><span>📅</span>Tracker</a>
+      <a class="nav-item" href="#"><span>🗂️</span>Memories</a>
+      <a class="nav-item" href="#"><span>👤</span>Profile</a>
+    </nav>
+  </main>
+
+  <script>
+    function showTracker(){
+      document.getElementById('homePage').style.display='none';
+      document.getElementById('trackerPage').style.display='block';
+      window.scrollTo(0,0);
+      calculateJourney();
+    }
+
+    function showHome(){
+      document.getElementById('trackerPage').style.display='none';
+      document.getElementById('homePage').style.display='block';
+      window.scrollTo(0,0);
+    }
+
+    function formatNumber(num){
+      return Number(num).toLocaleString('en-IN');
+    }
+
+    function calculateJourney(){
+      const startValue = document.getElementById('startDate').value;
+      const breakupValue = document.getElementById('breakupDate').value;
+      const errorBox = document.getElementById('dateError');
+
+      if(!startValue || !breakupValue){
+        errorBox.textContent = 'Please select both dates first.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      const startDate = new Date(startValue + 'T00:00:00');
+      const breakupDate = new Date(breakupValue + 'T00:00:00');
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      if(breakupDate < startDate){
+        errorBox.textContent = 'Breakup date should be after relationship start date.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      if(breakupDate > today){
+        errorBox.textContent = 'Breakup date cannot be in the future.';
+        errorBox.style.display = 'block';
+        return;
+      }
+
+      errorBox.style.display = 'none';
+
+      const oneDay = 1000 * 60 * 60 * 24;
+      const days = Math.floor((today - breakupDate) / oneDay);
+      const months = Math.max(0, Math.floor(days / 30.44));
+      const weekends = Math.floor(days / 7) * 2;
+      const hours = days * 24;
+      const minutes = hours * 60;
+
+      document.getElementById('daysResult').textContent = formatNumber(days);
+      document.getElementById('monthsResult').textContent = formatNumber(months);
+      document.getElementById('weekendsResult').textContent = formatNumber(weekends);
+      document.getElementById('hoursResult').textContent = formatNumber(hours);
+      document.getElementById('minutesResult').textContent = formatNumber(minutes);
+
+      document.getElementById('journeyCard').innerHTML = `${formatNumber(days)} days without them.<br>Still alive.<br>Still healing.`;
+    }
+
+    function shareJourney(){
+      calculateJourney();
+      const text = document.getElementById('journeyCard').innerText + '\n#LastMessage #MoveOnJourney';
+
+      if(navigator.share){
+        navigator.share({title:'My Move On Journey', text:text}).catch(function(){});
+      }else{
+        navigator.clipboard.writeText(text).then(function(){
+          alert('Journey text copied. Now you can paste it on Instagram or WhatsApp.');
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', calculateJourney);
+  </script>
+</body>
+</html>
